@@ -3,3 +3,12 @@
 
 
 class State(BaseModel):
+    """
+    A class representing a State.
+
+    Attributes:
+            name (str): The name of the state.
+
+    """
+
+    name = ""
