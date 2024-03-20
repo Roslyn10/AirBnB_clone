@@ -4,7 +4,7 @@
 
 class Review(BaseModel):
     """
-    A class representing a review. 
+    A class representing a review.
 
     Attributes:
         place_id (str): The Place id.
