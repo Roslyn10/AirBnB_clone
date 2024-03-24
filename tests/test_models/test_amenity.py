@@ -4,4 +4,5 @@
 import os
 import datetime
 import unittest
-import models.amenity import Amenity
+from models.amenity import Amenity
+from datetime import datetime
