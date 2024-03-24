@@ -3,6 +3,7 @@
 
 import cmd
 
+
 class HBNBCommand(cmd.Cmd):
     """Entry point of the command interpreter"""
 
@@ -12,13 +13,14 @@ class HBNBCommand(cmd.Cmd):
         """Quites the console"""
         return True
 
-    def do_end_of_file(self,arg):
+    def do_end_of_file(self, arg):
         """Indicates the end of the file"""
         return True
 
     def do_empty_line(self):
         """Doesnt do anything"""
         pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
