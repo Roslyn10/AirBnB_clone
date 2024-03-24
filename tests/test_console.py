@@ -2,4 +2,4 @@
 """Defines unittests for console.py"""
 
 import os
-import 
+import
