@@ -2,7 +2,8 @@
 """Defines a Base Model for the AirBnB clone"""
 
 import uuid
-from datetime import dateime
+from datetime import datetime
+
 
 class BaseModel:
     def __init__(self):
@@ -11,7 +12,11 @@ class BaseModel:
         self.updated_at = self.created_at
 
     def __str__(self):
-        return "[{}] ({}) {}".format(self.__class__.name__, self.id, slef.__dict__)
+        return "[{}] ({}) {}".format(
+                self.__class__.name__,
+                self.id,
+                self.__dict__
+        )
 
     def save(self):
         self.updated_at = datetime.now()
