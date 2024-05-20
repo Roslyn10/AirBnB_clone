@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Defines a class FileStorage"""
 import json
-
+from models.base_model import BaseModel
 
 class FileStorage:
     """A class that serializes instances to a JSON file
