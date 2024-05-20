@@ -9,17 +9,17 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb) '
 
+    def emptyline(self):
+        """Do nothing on an empty line"""
+        return False
+
     def do_quit(self, arg):
-        """Quites the console"""
+        """Quit command to exit the progam"""
         return True
 
-    def do_end_of_file(self, arg):
-        """Indicates the end of the file"""
+    def do_EOF(self, arg):
+        """Exit the console on EOF (Ctrl+D"""
         return True
-
-    def do_empty_line(self):
-        """Doesnt do anything"""
-        pass
 
 
 if __name__ == '__main__':
