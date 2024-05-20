@@ -21,6 +21,40 @@ class HBNBCommand(cmd.Cmd):
         """Exit the console on EOF (Ctrl+D"""
         return True
 
+    def do_create(self, arg):
+        """Creates a new instance of BaseModel, saves it and prints the id"""
+        if not arg:
+            print("** class name missing **")
+            return
+
+        class_name = arg.split[0]
+        if class_name not in self.class_map:
+            print("** class doesn't exist **")
+            return
+
+
+    def do_show(self, arg):
+        """Prints the string rep of an instance based on class name"""
+        if not arg:
+            print("** class name missing **")
+            return
+
+    def do_destroy(self, arg):
+        """Deletes the instance based on the class name and id"""
+        if not arg:
+            print("** class name missing **")
+            return
+
+    def do_all(self, arg):
+        """Prints all string rep of all instances based on the class name"""
+
+
+    def do_update(self, arg):
+        """Updates an instance base on the class name and id"""
+        print("** class name missing **")
+        return
+
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
