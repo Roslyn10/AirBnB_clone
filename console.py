@@ -5,7 +5,12 @@ import cmd
 import sys
 from models.base_model import BaseModel
 from models import storage
-
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
 
 class HBNBCommand(cmd.Cmd):
     """Entry point of the command interpreter"""
@@ -29,12 +34,13 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return
-        try:
-            new_instance = eval(arg)()
-            new_instance.save()
-            print(new_instance.id)
-        except NameError:
+        elif arg not in storage.classes:
             print("** class doesn't exist **")
+            return
+        new_instance = storage.classes[args]()
+        storage.save()
+        print(new_instance.id)
+        storage.save()
 
     def do_show(self, arg):
         """Prints the string rep of an instance based on class name"""
@@ -76,6 +82,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         """Prints all string rep of all instances based on the class name"""
         args = arg.split()
+        objects = storage.all()
         if args and args[0] not in storage.classes():
             print("** class doesn't exist **")
             return
@@ -124,5 +131,5 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute doesnt exist **")
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     HBNBCommand().cmdloop()

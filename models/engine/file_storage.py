@@ -9,8 +9,6 @@ from models.review import Review
 from models.state import State
 from models.user import User
 
-classes = {"BaseModel": BaseModel, "Amenity": Amenity, "City": City,
-           "Place": Place, "Review": Review, "State": State, "User": User}
 
 class FileStorage:
     """A class that serializes instances to a JSON file
@@ -36,6 +34,10 @@ class FileStorage:
 
     def reload(self):
         """deserializes the JSON file to __objects"""
+
+        classes = {"BaseModel": BaseModel, "Amenity": Amenity, "City": City,
+           "Place": Place, "Review": Review, "State": State, "User": User}
+
         try:
             with open(self.__file_path, 'r') as f:
                 jo = json.load(f)
