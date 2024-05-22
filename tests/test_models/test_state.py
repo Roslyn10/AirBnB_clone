@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """Defines  unittests for state.py"""
 
-import os
-import sys
-from datetime import datetime
+from models.base_model import BaseModel
+import unittest
 from models.state import State
+
+class test_State(unittest.TestCare):
+    """Tests for the class State"""

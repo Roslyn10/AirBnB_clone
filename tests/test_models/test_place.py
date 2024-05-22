@@ -1,8 +1,9 @@
 #!/usr/python3
 """Defines unitessts for place.py"""
 
-import os
-from datetime import datetime
-from models.place import Place
+from models.base_model import BaseModel
 import unittest
-import sys
+from models.place import Place
+
+class test_Place(unittest.TestCare):
+    """Tests for the class Place"""

@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """Defines unittests for city.py"""
 
+from models.base_model import BaseModel
 import unittest
-import os
 from models.city import City
-from datetime import datetime
+
+class test_City(unittest.TestCare):
+    """Tests for the class City"""
