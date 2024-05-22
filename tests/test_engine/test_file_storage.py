@@ -32,7 +32,7 @@ class test_fileStorage(unittest.TestCase):
         """Test that a new object is added to __objects"""
         self.asserIn("BaseModel.82949", self.storage.all())
 
-    def test_sabe(self):
+    def test_save(self):
         """Test that save serializes objects to JSON file"""
         self.storage.save()
         with open("file.json", "r") as file:
@@ -48,7 +48,15 @@ class test_fileStorage(unittest.TestCase):
         self.assertIn("BaseModel.82949", all_objects)
         self.assertEqual(all_objects["BaseModel.82949"].name, "Test_model")
 
-    def test_nofile_reload(self):
+    def test_reload_no_file(self):
         """Test reload with no existing file"""
         self.storage.reload()
         self.assertEqual(self.storage.all(), {})
+
+    def test_obj_list_empty(self):
+        """Test that object is empty"""
+        self.assertEqual(len(storage.all(), 0)
+
+    def test_file_path(self):
+    """Test that file_path is a string"""
+    self.assertEqual(type(storage.all(),dict)
