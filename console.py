@@ -1,4 +1,4 @@
-#!/usr/bin/pyhon3
+#!/usr/bin/python3
 """Implementing the HBHBC console/ Entry point for the console"""
 
 import cmd
@@ -42,13 +42,13 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return
-        if args[0] no in storage.classes():
+        if args[0] not in storage.classes():
             print("** class doesn't exist **")
             return
         if len(args) < 2:
             print("** instance id missing **")
             return
-        key = f"{args[0].{args[1]}"
+        key = f"{args[0]}.{args[1]}"
         if key not in storage.all():
             print("** no instance found **")
             return
@@ -100,7 +100,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) < 2:
             print("** instance id missing **")
             return
-        key = f"{args[0].{args[1]}"
+        key = f"{args[0]}.{args[1]}"
         if key not in storage.all():
             print("** no instance found **")
             return
@@ -124,5 +124,5 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute doesnt exist **")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     HBNBCommand().cmdloop()
