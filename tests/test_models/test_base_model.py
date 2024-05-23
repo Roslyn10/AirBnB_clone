@@ -35,7 +35,8 @@ class test_basemodel(unittest.TestCase):
 
     def test_str_method(self):
         """Tests the __str__ method"""
-        expected = "[BaseModel] ({}) {}".format(self.model.id, self.model.__dict__)
+        expected = (f"[BaseModel] ({self.model.id}) "
+                    f"{self.model.__dict__}")
         self.assertEqual(str(self.model), expected)
 
     def test_save_method(self):
@@ -50,7 +51,11 @@ class test_basemodel(unittest.TestCase):
         model_dict = self.model.to_dict()
         self.assertEqual(model_dict['__class__'], 'BaseModel')
         self.assertEqual(model_dict['id'], self.model.id)
-        self.assertEqual(model_dict['created_at'], self.model.created_at.isoformat())
-        self.assertEqual(model_dict['updated_at'], self.model.updated_at.isoformat())
+        self.assertEqual(
+            model_dict['created_at'],
+            self.model.created_at.isoformat())
+        self.assertEqual(
+            model_dict['updated_at'],
+            self.model.updated_at.isoformat())
         self.assertIsInstance(model_dict['created_at'], str)
         self.assertIsInstance(model_dict['updated_at'], str)

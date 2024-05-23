@@ -2,10 +2,12 @@
 """Defines unittests for user.py"""
 
 from models.base_model import BaseModel
+import os
 import unittest
 from models.user import User
 
-class test_User(unittest.TestCare):
+
+class test_User(unittest.TestCase):
     """Tests for the class User"""
 
     def setUp(self):
@@ -33,4 +35,4 @@ class test_User(unittest.TestCare):
 
     def test_inheritance(self):
         """Test that User is a subclass of BaseModel"""
-        self.assertTrue(issubclass(type.user), BaseModel))
+        self.assertTrue(issubclass(type(self.user), BaseModel))

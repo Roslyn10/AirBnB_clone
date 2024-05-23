@@ -5,7 +5,8 @@ from models.base_model import BaseModel
 import unittest
 from models.city import City
 
-class test_City(unittest.TestCare):
+
+class test_City(unittest.TestCase):
     """Tests for the class City"""
 
     def setUp(self):

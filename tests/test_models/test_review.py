@@ -5,7 +5,8 @@ from models.base_model import BaseModel
 import unittest
 from models.review import Review
 
-class test_Review(unittest.TestCare):
+
+class test_Review(unittest.TestCase):
     """Tests for the class Review"""
 
     def setUp(self):

@@ -5,7 +5,8 @@ from models.base_model import BaseModel
 import unittest
 from models.amenity import Amenity
 
-class test_Amenity(unittest.TestCare):
+
+class test_Amenity(unittest.TestCase):
     """Tests for the class Amenity"""
 
     def setUp(self):

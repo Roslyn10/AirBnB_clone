@@ -3,6 +3,7 @@
 
 import cmd
 import sys
+import json
 from models.base_model import BaseModel
 from models import storage
 from models.amenity import Amenity
@@ -60,6 +61,9 @@ class HBNBCommand(cmd.Cmd):
             return
         print(storage.all()[key])
 
+    """def __init__(self, classes):"""
+    """Allows the console to run classes"""
+    """self.classes = classes"""
 
     def do_destroy(self, arg):
         """Deletes the instance based on the class name and id"""
@@ -107,17 +111,17 @@ class HBNBCommand(cmd.Cmd):
             print('** instance id missing **')
             return
         else:
-            key = arg[0] + '.' + arg[1]
-            if key in storage.all():
+            keys = arg[0] + '.' + arg[1]
+            if keys in storage.all():
                 if len(arg) > 2:
                     if len(arg) == 3:
                         print('** value missing **')
                     else:
                         setattr(
-                            storage.all()[key],
+                            storage.all()[keys],
                             arg[2],
                             arg[3][1:-1])
-                        storage.all()[key].save()
+                        storage.all()[keys].save()
                 else:
                     print('** attribute name missing **')
             else:
