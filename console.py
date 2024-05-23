@@ -37,7 +37,7 @@ class HBNBCommand(cmd.Cmd):
         elif arg not in storage.classes:
             print("** class doesn't exist **")
             return
-        new_instance = storage.classes[args]()
+        new_instance = storage.classes[arg]()
         storage.save()
         print(new_instance.id)
         storage.save()
@@ -48,7 +48,7 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return
-        if args[0] not in storage.classes():
+        if args[0] not in storage.classes:
             print("** class doesn't exist **")
             return
         if len(args) < 2:
@@ -60,13 +60,14 @@ class HBNBCommand(cmd.Cmd):
             return
         print(storage.all()[key])
 
+
     def do_destroy(self, arg):
         """Deletes the instance based on the class name and id"""
         args = arg.split()
         if not arg:
             print("** class name missing **")
             return
-        if args[0] not in storage.classes():
+        if args[0] not in storage.classes:
             print("** class doesn't exist **")
             return
         if len(args) < 2:
@@ -79,56 +80,49 @@ class HBNBCommand(cmd.Cmd):
         del storage.all()[key]
         storage.save()
 
+
     def do_all(self, arg):
         """Prints all string rep of all instances based on the class name"""
         args = arg.split()
         objects = storage.all()
-        if args and args[0] not in storage.classes():
+        if args and args[0] not in storage.classes:
             print("** class doesn't exist **")
             return
         if not args:
             instances = [str(obj) for obj in storage.all().values()]
         else:
-            instances = {
-                    [str(obj) for key,
-                        obj in storage.all().items() if key.startwith(args[0])]
-                    }
-            print(instances)
+            instances = [str(obj) for key, obj in storage.all().items() if key.startswith(args[0])]
+        print(instances)
 
     def do_update(self, arg):
-        """Updates an instance base on the class name and id"""
-        args = arg.split()
-        if not args:
-            print("** class name missing **")
+        """Updates an instance based on the class name and id"""
+        arg = arg.split()
+        if len(arg) == 0:
+            print('** class name missing **')
             return
-        if args[0] not in storage.classes():
+        elif arg[0] not in self.classes:
             print("** class doesn't exist **")
             return
-        if len(args) < 2:
-            print("** instance id missing **")
+        elif len(arg) == 1:
+            print('** instance id missing **')
             return
-        key = f"{args[0]}.{args[1]}"
-        if key not in storage.all():
-            print("** no instance found **")
-            return
-        if len(args) < 3:
-            print(" 88 attribute name missing **")
-            return
-        if len(args) < 4:
-            print("** value missing **")
-            return
-
-        instance = storage.all()[key]
-        attr_name = args[2]
-        attr_value = args[3].strip('"')
-
-        if hasattr(instance, attr_name):
-            attr_type = type(getattr(instance, attr_name))
-            attr_value = attr_type(attr_value)
-            setattr(instance, attr_name, attr_value)
-            instance.save()
         else:
-            print("** attribute doesnt exist **")
+            key = arg[0] + '.' + arg[1]
+            if key in storage.all():
+                if len(arg) > 2:
+                    if len(arg) == 3:
+                        print('** value missing **')
+                    else:
+                        setattr(
+                            storage.all()[key],
+                            arg[2],
+                            arg[3][1:-1])
+                        storage.all()[key].save()
+                else:
+                    print('** attribute name missing **')
+            else:
+                print('** no instance found **')
+
 
 
 if __name__ == '__main__':
