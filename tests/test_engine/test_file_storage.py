@@ -24,13 +24,17 @@ class test_fileStorage(unittest.TestCase):
 
     def test_all(self):
         """Test that all returns the __objects dictionary"""
+        storage = FileStorage()
+        obj = storage.all()
         all_objects = self.storage.all()
         self.assertEqual(len(all_objects), 1)
         self.assertIn("BaseModel.82949", all_objects)
 
     def test_new(self):
         """Test that a new object is added to __objects"""
-        self.asserIn("BaseModel.82949", self.storage.all())
+        storage = FileStorage()
+        obj = storage.all()
+        self.assertIn("BaseModel.82949", self.storage.all())
 
     def test_save(self):
         """Test that save serializes objects to JSON file"""
